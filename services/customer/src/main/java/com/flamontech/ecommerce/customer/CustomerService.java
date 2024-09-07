@@ -1,11 +1,13 @@
 package com.flamontech.ecommerce.customer;
 
-import com.ctc.wstx.util.StringUtil;
 import com.flamontech.ecommerce.exception.CustomerNotFoundException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -49,4 +51,13 @@ public class CustomerService {
             customer.setAddress(request.address());
         }
     }
+
+
+    public List<CustomerResponse> findAllCustomers() {
+        return  repository.findAll()
+                .stream()
+                .map(mapper::fromCustomer)
+                .collect(Collectors.toList());
+    }
+
 }
