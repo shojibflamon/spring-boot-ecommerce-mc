@@ -17,4 +17,10 @@ public class CustomerController {
         return ResponseEntity.ok(service.createCustomer(request));
    }
 
+    @PutMapping
+    ResponseEntity<Void> updateCustomer(@RequestBody @Valid CustomerRequest request) {
+        service.updateCustomer(request);
+       return ResponseEntity.accepted().build();
+    }
+
 }
