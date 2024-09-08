@@ -17,6 +17,8 @@ services:
   pgadmin:
     container_name: ms_pgadmin
     image: dpage/pgadmin4
+    depends_on:
+      - postgresql
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-password}
